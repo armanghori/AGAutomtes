@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AG Automates – SaaS & MVP Development | AI Integrations | Automation</title>
+
+  <!-- Primary Meta -->
+  <meta name="title" content="AG Automates – SaaS & MVP Development | AI Integrations" />
+  <meta name="description"
+    content="We build scalable SaaS products, MVPs, dashboards, AI-powered platforms, and automation systems. Fast delivery, clean architecture, and modern UI/UX." />
+  <meta name="keywords"
+    content="SaaS developer, MVP developer, AI automation, SaaS builder, SaaS agency, OpenAI developer, NestJS developer, React developer" />
+  <meta name="author" content="AG Automates" />
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AG Automates – SaaS & MVP Development" />
+  <meta property="og:description"
+    content="Launch your SaaS or MVP fast with modern tech, AI integrations, and scalable architecture." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" />
+  <meta property="og:url" content="https://arman-your-domain-or-github-pages-link" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AG Automates – SaaS & MVP Development" />
+  <meta name="twitter:description"
+    content="We build powerful SaaS apps, MVPs, dashboards, APIs, and AI-driven tools." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://arman-your-domain-or-github-pages-link" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/img/icons/image-removebg-preview.png" type="image/png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- Icons & Animations -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <!-- JSON-LD Schema (Google SEO Booster) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AG Automates",
+    "url": "https://arman-your-domain-or-github-pages-link",
+    "logo": "https://arman-your-domain-or-github-pages-link/img/icons/image-removebg-preview.png",
+    "sameAs": [
+      "https://github.com/YOUR_GITHUB_USERNAME",
+      "https://www.linkedin.com/in/YOUR-LINKEDIN",
+      "https://wa.me/923082253573"
+    ],
+    "description": "We build SaaS products, MVPs, dashboards, AI systems, and automation tools with modern tech.",
+    "founder": "Arman Ghouri",
+    "foundingDate": "2024",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+923082253573",
+      "contactType": "customer support"
+    }
+  }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f9fafb;
+      color: #111;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 25px;
+      background: #4f46e5;
+      color: #fff;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.4s;
+      z-index: 9999;
+      font-weight: 600;
+    }
+
+    #toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 10%;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    header nav ul li a {
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    header nav ul li a:hover {
+      color: #14b8a6;
+    }
+
+    header .cta {
+      padding: 10px 25px;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    header .cta:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 120px 10%;
+      position: relative;
+      overflow: hidden;
+      background: #f5f5f7;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: #111;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .hero-buttons a {
+      margin-right: 20px;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      border: 2px solid #4f46e5;
+      color: #4f46e5;
+    }
+
+    .btn-outline:hover {
+      background: rgba(79, 70, 229, 0.1);
+      transform: scale(1.05);
+    }
+
+    .hero-image {
+      width: 50%;
+      position: relative;
+    }
+
+    .hero-image img {
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(0);
+      transition: 0.5s;
+    }
+
+    .hero-image img:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .blob1 {
+      width: 400px;
+      height: 400px;
+      background: #6366f1;
+      top: -150px;
+      left: -150px;
+    }
+
+    .blob2 {
+      width: 500px;
+      height: 500px;
+      background: #14b8a6;
+      bottom: -200px;
+      right: -200px;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(30px) translateX(20px);
+      }
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 10%;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+      color: #111;
+    }
+
+    section p {
+      text-align: center;
+      margin-bottom: 50px;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    /* Services */
+    .services {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .service-card {
+      background: #fff;
+      flex: 1 1 250px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .service-card i {
+      font-size: 2.5rem;
+      color: #4f46e5;
+      margin-bottom: 15px;
+    }
+
+    .service-card h5 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Projects */
+    .projects {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .project-card {
+      background: #fff;
+      flex: 1 1 320px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: 0.4s;
+      text-align: center;
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .project-card h5 {
+      margin: 20px 20px 10px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      margin: 0 20px 20px;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Tech stack */
+    .tech-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tech-card {
+      background: #fff;
+      padding: 25px;
+      width: 200px;
+      border-radius: 15px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: 0.4s;
+    }
+
+    .tech-card img {
+      width: 45px;
+      margin-bottom: 10px;
+    }
+
+    .tech-card h6 {
+      font-size: 1rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Contact form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      color: #111;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+      width: 100%;
+    }
+
+    .contact-form textarea {
+      resize: none;
+      min-height: 150px;
+    }
+
+    .contact-form .btn-holder a {
+      text-align: center;
+      display: block;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .contact-form .btn-holder a:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 50px 10%;
+      background: #fff;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media(max-width:992px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero-image {
+        width: 100%;
+        margin-top: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="toast"></div>
+
+  <header>
+    <div class="logo"><strong>AG Automates</strong></div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#tech">Tech Stack</a></li>
+        <li><a href="#contact">Share Your Problem</a></li>
+      </ul>
+    </nav>
+    <a href="https://wa.me/923082253573?text=*Hello%20Arman%20Ghouri*%20can%20i%20get%20more%20info%20on%20your%20saas%20products?"
+      target="_blank" class="cta">Get a Quote</a>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="hero-content" data-aos="fade-right">
+      <h1>We Build Scalable SaaS Products & MVPs</h1>
+      <p>Helping startups and enterprises launch quickly and scale efficiently.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn-primary">Our Services</a>
+        <a href="#contact" class="btn-outline">Schedule a Call</a>
+      </div>
+    </div>
+    <div class="hero-image" data-aos="fade-left">
+      <img
+        src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Dashboard Mockup">
+    </div>
+  </section>
+
+  <section id="services">
+    <h2 data-aos="fade-up">Our Services</h2>
+    <p data-aos="fade-up" data-aos-delay="100">End-to-end SaaS & MVP development solutions.</p>
+    <div class="services">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-rocket"></i>
+        <h5>MVP Development</h5>
+        <p>Launch a functional MVP fast with scalable architecture.</p>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-layer-group"></i>
+        <h5>SaaS Platforms</h5>
+        <p>Multi-tenant platforms with dashboards, analytics & secure integrations.</p>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-cloud"></i>
+        <h5>API & Integrations</h5>
+        <p>Connect your SaaS with third-party tools seamlessly.</p>
+      </div>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="500"><i class="fas fa-shield-alt"></i>
+        <h5>Maintenance & Support</h5>
+        <p>Ongoing support to ensure reliability & scalability.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 data-aos="fade-up">Case Studies</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Some of our successful SaaS & MVP projects.</p>
+    <div class="projects">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <img
+          src="https://images.unsplash.com/photo-1642132652859-3ef5a1048fd1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          alt="Custom SaaS Platform">
+        <h5>Custom SaaS Platform</h5>
+        <p>Multi-tenant SaaS with subscription management, dashboards, and secure integrations.</p>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <img
+          src="https://plus.unsplash.com/premium_photo-1680509034814-e733c5f873ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNhYXN8ZW58MHx8MHx8fDA%3D"
+          alt="MVP Application">
+        <h5>Rapid MVP Development</h5>
+        <p>Delivered a fully functional MVP including front-end, backend APIs, and deployment in 4 weeks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech">
+    <h2 data-aos="fade-up">Tech Stack</h2>
+
+    <div class="tech-grid">
+
+      <!-- React -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://cdn.worldvectorlogo.com/logos/react-2.svg">
+        <h6>React.js</h6>
+      </div>
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="https://cdn.worldvectorlogo.com/logos/openai-2.svg">
+        <h6>OpenAI</h6>
+      </div>
+      <!-- TypeScript -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="https://cdn.worldvectorlogo.com/logos/typescript.svg">
+        <h6>TypeScript</h6>
+      </div>
+
+      <!-- JavaScript -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="https://cdn.worldvectorlogo.com/logos/javascript-1.svg">
+        <h6>JavaScript</h6>
+      </div>
+
+      <!-- NestJS -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="https://cdn.worldvectorlogo.com/logos/nestjs.svg">
+        <h6>NestJS</h6>
+      </div>
+
+      <!-- MongoDB -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="500">
+        <img src="https://cdn.worldvectorlogo.com/logos/mongodb-icon-1.svg">
+        <h6>MongoDB</h6>
+      </div>
+
+      <!-- Bootstrap -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="600">
+        <img src="https://cdn.worldvectorlogo.com/logos/bootstrap-5-1.svg">
+        <h6>Bootstrap</h6>
+      </div>
+
+      <!-- HTML5 -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="700">
+        <img src="https://cdn.worldvectorlogo.com/logos/html-1.svg">
+        <h6>HTML5</h6>
+      </div>
+
+      <!-- CSS3 -->
+      <div class="tech-card" data-aos="fade-up" data-aos-delay="800">
+        <img src="https://cdn.worldvectorlogo.com/logos/css-3.svg">
+        <h6>CSS3</h6>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="contact">
+    <h2 data-aos="fade-up">Share Your Problem</h2>
+    <p data-aos="fade-up" data-aos-delay="100">Tell us about your SaaS or MVP project idea, and we'll get back to you
+      quickly.</p>
+    <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+      <input id="userName" type="text" placeholder="Your Name" />
+      <input id="userEmail" type="email" placeholder="Your Email" />
+      <input id="userBudget" type="text" placeholder="Budget (PKR)" />
+      <input id="userTimeline" type="text" placeholder="Timeline (e.g., 1 week / 1 month)" />
+      <textarea id="userProblem" placeholder="Describe your project idea..."></textarea>
+      <div class="btn-holder">
+        <a onclick="sendToGoogleForm()">Send Message</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 AG Automates. All rights reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+
+    function showToast(message, bg = "#4f46e5") {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.style.background = bg;
+      toast.classList.add("show");
+      setTimeout(() => { toast.classList.remove("show"); }, 3000);
+    }
+
+    async function sendToGoogleForm() {
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      const budget = document.getElementById('userBudget').value.trim();
+      const timeline = document.getElementById('userTimeline').value.trim();
+      const problem = document.getElementById('userProblem').value.trim();
+      if (!name || !email || !budget || !timeline || !problem) { showToast("⚠️ Please fill all fields", "#dc2626"); return; }
+      const formData = new FormData();
+      formData.append("entry.1108910930", name);
+      formData.append("entry.456695701", email);
+      formData.append("entry.1859137683", budget);
+      formData.append("entry.1463246148", timeline);
+      formData.append("entry.744090215", problem);
+      try {
+        await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScsfLo7E-2U7MwStEkIThT_7D6vIRPLMwJmHaUDXVx3xWD1RQ/formResponse", { method: "POST", mode: "no-cors", body: formData });
+        showToast("✅ Your message has been submitted", "#16a34a");
+        document.getElementById('userName').value = "";
+        document.getElementById('userEmail').value = "";
+        document.getElementById('userBudget').value = "";
+        document.getElementById('userTimeline').value = "";
+        document.getElementById('userProblem').value = "";
+      } catch (err) { console.error(err); showToast("⚠️ Submission failed", "#dc2626"); }
+    }
+  </script>
+</body>
+
+</html>
