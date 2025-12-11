@@ -34,7 +34,9 @@
   <link rel="canonical" href="https://armanghori.github.io/AGAutomtes/" />
 
   <!-- Favicon -->
-  <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/project-pilot-5434c.appspot.com/o/companies%2F1765460648268-image-removebg-preview.png?alt=media&token=85dcb3fe-430b-4672-b329-6c967673a1eb" type="image/png" />
+  <link rel="icon"
+    href="https://firebasestorage.googleapis.com/v0/b/project-pilot-5434c.appspot.com/o/companies%2F1765460648268-image-removebg-preview.png?alt=media&token=85dcb3fe-430b-4672-b329-6c967673a1eb"
+    type="image/png" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500&display=swap"
@@ -474,6 +476,30 @@
         margin-top: 50px;
       }
     }
+
+    #sendBtn {
+      position: relative;
+    }
+
+    .btn-loader {
+      width: 18px;
+      height: 18px;
+      border: 3px solid #ffffff55;
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -629,7 +655,10 @@
       <input id="userTimeline" type="text" placeholder="Timeline (e.g., 1 week / 1 month)" />
       <textarea id="userProblem" placeholder="Describe your project idea..."></textarea>
       <div class="btn-holder">
-        <a onclick="sendToGoogleForm()">Send Message</a>
+        <a id="sendBtn" onclick="sendToGoogleForm()">
+          <span class="btn-text">Send Message</span>
+          <span class="btn-loader"></span>
+        </a>
       </div>
     </div>
   </section>
@@ -651,28 +680,64 @@
     }
 
     async function sendToGoogleForm() {
+      const btn = document.getElementById("sendBtn");
+      const btnText = btn.querySelector(".btn-text");
+      const btnLoader = btn.querySelector(".btn-loader");
+
+      // Switch to loader
+      btnText.style.display = "none";
+      btnLoader.style.display = "inline-block";
+      btn.style.pointerEvents = "none"; // disable button
+
       const name = document.getElementById('userName').value.trim();
       const email = document.getElementById('userEmail').value.trim();
       const budget = document.getElementById('userBudget').value.trim();
       const timeline = document.getElementById('userTimeline').value.trim();
       const problem = document.getElementById('userProblem').value.trim();
-      if (!name || !email || !budget || !timeline || !problem) { showToast("⚠️ Please fill all fields", "#dc2626"); return; }
+
+      if (!name || !email || !budget || !timeline || !problem) {
+        showToast("⚠️ Please fill all fields", "#dc2626");
+
+        // reset button
+        btnText.style.display = "inline-block";
+        btnLoader.style.display = "none";
+        btn.style.pointerEvents = "auto";
+        return;
+      }
+
       const formData = new FormData();
       formData.append("entry.1108910930", name);
       formData.append("entry.456695701", email);
       formData.append("entry.1859137683", budget);
       formData.append("entry.1463246148", timeline);
       formData.append("entry.744090215", problem);
+
       try {
-        await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScsfLo7E-2U7MwStEkIThT_7D6vIRPLMwJmHaUDXVx3xWD1RQ/formResponse", { method: "POST", mode: "no-cors", body: formData });
+        await fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLScsfLo7E-2U7MwStEkIThT_7D6vIRPLMwJmHaUDXVx3xWD1RQ/formResponse", {
+          method: "POST",
+          mode: "no-cors",
+          body: formData
+        });
+
         showToast("✅ Your message has been submitted", "#16a34a");
+
         document.getElementById('userName').value = "";
         document.getElementById('userEmail').value = "";
         document.getElementById('userBudget').value = "";
         document.getElementById('userTimeline').value = "";
         document.getElementById('userProblem').value = "";
-      } catch (err) { console.error(err); showToast("⚠️ Submission failed", "#dc2626"); }
+      }
+      catch (err) {
+        console.error(err);
+        showToast("⚠️ Submission failed", "#dc2626");
+      }
+
+      // ALWAYS reset button
+      btnText.style.display = "inline-block";
+      btnLoader.style.display = "none";
+      btn.style.pointerEvents = "auto";
     }
+
   </script>
 </body>
 
