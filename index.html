@@ -500,6 +500,35 @@
         transform: rotate(360deg);
       }
     }
+
+    .project-card {
+      position: relative;
+    }
+
+    .project-link {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 42px;
+      height: 42px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .project-link i {
+      font-size: 1rem;
+    }
+
+    .project-link:hover {
+      background: #4f46e5;
+      transform: scale(1.15);
+    }
   </style>
 </head>
 
@@ -568,18 +597,24 @@
     <p data-aos="fade-up" data-aos-delay="100">Some of our successful SaaS & MVP projects.</p>
     <div class="projects">
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <img
-          src="https://images.unsplash.com/photo-1642132652859-3ef5a1048fd1?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt="Custom SaaS Platform">
-        <h5>Custom SaaS Platform</h5>
-        <p>Multi-tenant SaaS with subscription management, dashboards, and secure integrations.</p>
+        <a href="https://hirecheck.lovable.app/" target="_blank" class="project-link" aria-label="View Project">
+          <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+        <img src="/img/services/linkedin.png" alt="Custom SaaS Platform">
+        <h5>HireCheck | AI Resume Analyzer</h5>
+        <p>HireCheck is an AI-powered resume screening tool built for HR teams and recruiters. Upload resumes in bulk
+          and instantly get job-wise CV scores, key insights, and red flags—eliminating the need to manually review each
+          resume and significantly reducing hiring time.</p>
       </div>
       <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-        <img
-          src="https://plus.unsplash.com/premium_photo-1680509034814-e733c5f873ac?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNhYXN8ZW58MHx8MHx8fDA%3D"
-          alt="MVP Application">
-        <h5>Rapid MVP Development</h5>
-        <p>Delivered a fully functional MVP including front-end, backend APIs, and deployment in 4 weeks.</p>
+        <a href="https://feedbase.lovable.app/" target="_blank" class="project-link" aria-label="View Project">
+          <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+        <img src="/img/services/promo-banner-linkedin.jpg" alt="MVP Application">
+        <h5>FeedBase | FeedBack Collecting Platform</h5>
+        <p>FeedBase is a lightweight micro-SaaS that helps startups, founders, and store owners collect structured
+          customer feedback, track feature requests, and make data-driven product improvements—all from a single
+          dashboard.</p>
       </div>
     </div>
   </section>
